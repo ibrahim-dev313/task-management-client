@@ -22,7 +22,7 @@ const TaskList = () => {
         const movedTask = tasks.find((task) => task._id === result.draggableId);
 
         try {
-            await axios.put(`http://localhost:5000/tasks/${movedTask._id}`, { status: result.destination.droppableId });
+            await axios.put(`https://task-management-server-mi1357.vercel.app/tasks/${movedTask._id}`, { status: result.destination.droppableId });
             refetch();
         } catch (error) {
             console.error('Error updating task status:', error.message);
@@ -44,7 +44,7 @@ const TaskList = () => {
                 status: editedTask.status,
             };
 
-            const res = await axios.put(`http://localhost:5000/tasks/${editedTask._id}`, updatedTask);
+            const res = await axios.put(`https://task-management-server-mi1357.vercel.app/tasks/${editedTask._id}`, updatedTask);
             console.log(res);
             refetch();
             setEditingTaskId(null);
@@ -57,7 +57,7 @@ const TaskList = () => {
 
     const handleDelete = async (taskId) => {
         try {
-            await axios.delete(`http://localhost:5000/tasks/${taskId}`);
+            await axios.delete(`https://task-management-server-mi1357.vercel.app/tasks/${taskId}`);
             refetch();
             toast.success('Task deleted successfully');
         } catch (error) {
