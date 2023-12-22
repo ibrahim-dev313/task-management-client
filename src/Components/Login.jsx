@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 
 const Login = () => {
     const navigate = useNavigate()
 
-    const { login } = useContext(AuthContext)
+    const { login, googleLogin } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
@@ -19,6 +20,14 @@ const Login = () => {
             })
             .catch(error => console.log(error))
     }
+    const handleGoogleLogin = async () => {
+        try {
+            await googleLogin();
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Google login error:', error);
+        }
+    };
     return (
         <div className="min-h-screen hero bg-base-200">
             <div className="w-full max-w-xl shadow-2xl card bg-base-100">
@@ -61,6 +70,19 @@ const Login = () => {
 
                     <div className="mt-6 form-control">
                         <button className="font-bold uppercase btn btn-primary">Login</button>
+                    </div>
+
+
+                    <div className="flex items-center justify-center mt-4">
+                        <div
+                            type="button"
+                            onClick={handleGoogleLogin}
+                            className="flex items-center justify-center btn btn-outline btn-primary btn-block"
+                        >
+                            <FaGoogle />
+
+                            Sign up with Google
+                        </div>
                     </div>
                 </form>
             </div>

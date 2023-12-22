@@ -12,7 +12,7 @@ const TaskForm = () => {
     const onSubmit = async (data) => {
         try {
             // Replace the URL with your actual backend endpoint for posting tasks
-            const response = await axios.post("http://localhost:5000/tasks", {
+            const response = await axios.post("https://task-management-server-mi1357.vercel.app/tasks", {
                 title: data.title,
                 description: data.description,
                 deadline: data.deadline,
@@ -32,10 +32,10 @@ const TaskForm = () => {
     };
 
     return (
-        <div className="min-h-screen hero bg-base-200">
-            <div className="w-full max-w-xl shadow-2xl card bg-base-100">
-                <form onSubmit={handleSubmit(onSubmit)} className="w-full card-body">
-                    <h1 className="text-5xl font-bold text-center">Add a New Task</h1>
+        <div className="min-h-screen p-8 bg-base-200">
+            <div className="shadow-2xl rounded-xl bg-base-100">
+                <form onSubmit={handleSubmit(onSubmit)} className="w-full p-8">
+                    <h1 className="text-2xl font-bold text-center lg:text-4xl">Add a New Task</h1>
 
                     <div className="form-control">
                         <label className="label">

@@ -3,9 +3,9 @@ import DashboardNav from "../Components/DashboardNav";
 
 const Dashboard = () => {
     return (
-        <div className="flex w-full">
+        <div className="relative w-full lg:flex">
             <DashboardNav></DashboardNav>
-            <div className="w-2/3 ">
+            <div className="w-full lg:w-2/3">
                 <Outlet></Outlet>
 
             </div>
