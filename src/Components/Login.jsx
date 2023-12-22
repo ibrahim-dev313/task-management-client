@@ -7,11 +7,11 @@ import { AuthContext } from '../Providers/AuthProvider';
 const Signup = () => {
     const navigate = useNavigate()
 
-    const { signup } = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
-        signup(data.email, data.password)
+        login(data.email, data.password)
             .then(res => {
                 console.log(res.user)
                 navigate('/dashboard')
@@ -23,7 +23,7 @@ const Signup = () => {
         <div className="min-h-screen hero bg-base-200">
             <div className="w-full max-w-xl shadow-2xl card bg-base-100">
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full card-body">
-                    <h1 className="text-5xl font-bold text-center">Signup now!</h1>
+                    <h1 className="text-5xl font-bold text-center">Login now!</h1>
 
                     <div className="form-control">
                         <label className="label">
@@ -54,13 +54,13 @@ const Signup = () => {
 
                         <div className="mt-4">
                             <p className="">
-                                Already have an account? <Link to={'/login'} className="text-error link link-hover"> Login Here</Link>
+                                Dont have an account? <Link to={'/signup'} className="text-error link link-hover"> Signup Here</Link>
                             </p>
                         </div>
                     </div>
 
                     <div className="mt-6 form-control">
-                        <button className="font-bold uppercase btn btn-primary">Signup</button>
+                        <button className="font-bold uppercase btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>
