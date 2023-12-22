@@ -3,6 +3,8 @@ import DashboardHome from "../Components/DashboardHome";
 import Home from "../Components/Home";
 import Login from "../Components/Login";
 import Signup from "../Components/Signup";
+import TaskList from "../Components/TaskList";
+import TaskManagement from "../Components/TaskManagement";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import PrivateRoute from "./PrivateRoute";
@@ -33,7 +35,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <DashboardHome></DashboardHome>
-            }
+            },
+            {
+                path: '/dashboard/add-task',
+                element: <TaskManagement></TaskManagement>
+            },
+            {
+                path: '/dashboard/tasks',
+                element: <TaskList></TaskList>
+            },
         ]
     }
 

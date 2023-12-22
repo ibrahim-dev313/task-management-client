@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 
-const Signup = () => {
+const Login = () => {
     const navigate = useNavigate()
 
     const { login } = useContext(AuthContext)
@@ -15,7 +15,7 @@ const Signup = () => {
             .then(res => {
                 console.log(res.user)
                 navigate('/dashboard')
-                toast.success('Signup Successfull')
+                toast.success('Login Successfull')
             })
             .catch(error => console.log(error))
     }
@@ -68,4 +68,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Login;

@@ -1,0 +1,17 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+
+const useTasks = (userEmail) => {
+
+    const { isLoading, data: tasks = [], refetch } = useQuery({
+        queryKey: ['tasks', userEmail],
+        queryFn: async () => {
+            const res = await axios.get(`http://localhost:5000/tasks/${userEmail}`);
+            return res.data;
+        },
+    });
+
+    return { tasks, isLoading, refetch };
+};
+
+export default useTasks;
